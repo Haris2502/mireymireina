@@ -18,6 +18,6 @@ jobs:
       with:
         server: mireymireina.jerryyss.my.id
         username: jerryyss
-        password: dulzuraa
+        password: ${{ secrets.FTP_PASSWORD }}
         # Path di server kamu sesuai gambar DirectAdmin tadi
         server-dir: ./domains/mireymireina.jerryyss.my.id/public_html/
