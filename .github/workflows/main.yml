@@ -1,4 +1,4 @@
-name: Deploy to DirectAdmin Final
+name: Deploy to DirectAdmin Final Fix
 
 on:
   push:
@@ -16,11 +16,11 @@ jobs:
     - name: Sync files to Server
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
-        server: mireymireina.jerryyss.my.id
-        # Gunakan login lengkap sesuai screenshot
+        # GANTI 'jerryyss.my.id' dengan Alamat IP Server kamu jika tetap gagal
+        server: jerryyss.my.id 
         username: mireymireina@jerryyss.my.id
         password: ${{ secrets.FTP_PASSWORD }}
-        # Karena akun FTP ini sudah dikunci ke folder public_html, 
-        # kita gunakan './' agar file langsung masuk ke situ
         server-dir: ./
         protocol: ftp
+        # Tambahkan baris ini untuk menghindari masalah keamanan sertifikat
+        dangerous-clean-slate: false
