@@ -1,33 +1,23 @@
-name: html
+name: Deploy to DirectAdmin via FTP
 
 on:
   push:
-    branches: ["main"] # Menjalankan otomatis saat kamu klik 'Commit changes' di branch main
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+    branches:
+      - main
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  web-deploy:
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+    - name: Get latest code
+      uses: actions/checkout@v4
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          # Mengupload seluruh isi folder repository
-          path: '.'
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+    - name: Sync files to Server
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: mireymireina.jerryyss.my.id
+        username: jerryyss
+        password: dulzuraa
+        # Path di server kamu sesuai gambar DirectAdmin tadi
+        server-dir: ./domains/mireymireina.jerryyss.my.id/public_html/
