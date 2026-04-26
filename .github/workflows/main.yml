@@ -1,4 +1,4 @@
-name: Deploy to DirectAdmin via FTP
+name: Deploy to DirectAdmin Final
 
 on:
   push:
@@ -17,7 +17,10 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
         server: mireymireina.jerryyss.my.id
-        username: jerryyss
+        # Gunakan login lengkap sesuai screenshot
+        username: mireymireina@jerryyss.my.id
         password: ${{ secrets.FTP_PASSWORD }}
-        # Path di server kamu sesuai gambar DirectAdmin tadi
-        server-dir: ./domains/mireymireina.jerryyss.my.id/public_html/
+        # Karena akun FTP ini sudah dikunci ke folder public_html, 
+        # kita gunakan './' agar file langsung masuk ke situ
+        server-dir: ./
+        protocol: ftp
